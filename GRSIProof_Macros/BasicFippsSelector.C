@@ -18,6 +18,8 @@ void BasicFippsSelector::CreateHistograms() {
                                    ggBins, ggXMin, ggXMax);
   fHSparse["ggEb"] = new THnSparseF("ggEb", "#gamma-#gamma Background Coincidence", 2,
           ggBins, ggXMin, ggXMax);
+  fHSparse["ggEbs"] = new THnSparseF("ggEbs", "#gamma-#gamma Coincidence Background Subtracted", 2,
+                                   ggBins, ggXMin, ggXMax);
 
   Int_t gggBins[3] = {10000, 10000, 10000};
   Double_t gggXMin[3] = {0., 0., 0.};
@@ -134,4 +136,11 @@ void BasicFippsSelector::FillHistograms() {
   FillAddbackHistograms();
   FillSuppressedHistograms();
   FillSuppressedAddbackHistograms();
+}
+
+void BasicFippsSelector::EndOfSort() {
+  // Create background subtracted histograms
+  fHSparse.at("ggEbs")->Add(fHSparse.at("ggE"), 1);
+  fHSparse.at("ggEbs")->Sumw2();
+  fHSparse.at("ggEbs")->Add(fHSparse.at("ggEs"), -1);
 }

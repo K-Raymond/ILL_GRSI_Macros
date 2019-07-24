@@ -60,6 +60,7 @@ class BasicFippsSelector
   void CreateHistograms();
   void FillHistograms();
   void InitializeBranches(TTree *tree);
+  void EndOfSort();
 
   //** HISTOGRAM FILLING FUNCTIONS **//
   void FillGammaHistograms();
