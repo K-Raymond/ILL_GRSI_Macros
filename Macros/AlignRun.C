@@ -122,7 +122,7 @@ void AlignTree(TTree *AnalysisTree)
    TH1 *     SeedSlice;
    TH1 *     WorkSlice;
    TChannel *pChannel;
-   for (int i = 0; i < NChans; ++i) {
+   for (int i = 0; i <= NChans; ++i) {
       pChannel  = TChannel::GetChannelByNumber(i);
       SeedSlice = SeedEngMat->ProjectionY(Form("hS_%.2i", i), i + 1, i + 1);
       WorkSlice = WorkEngMat->ProjectionY(Form("hW_%.2i", i), i + 1, i + 1);

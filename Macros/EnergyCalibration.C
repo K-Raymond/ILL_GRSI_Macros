@@ -25,7 +25,7 @@ void EnergyCalibration(TTree *AnalysisTree, TNucleus* NucleusForCalibration)
    TH2D *mat_q = new TH2D("mat_q", "Charge Matrix", NChans, 0, (double)NChans, 32000, 0, 32000);
    AnalysisTree->Project("mat_q", "TFipps.fHits.fCharge:TFipps.fHits.GetChannel()->GetNumber()");
 
-   for (int i = 0; i < NChans; i++) {
+   for (int i = 0; i <= NChans; i++) {
       pChannel  = TChannel::GetChannelByNumber(i);
       TH1D *h_q = mat_q->ProjectionY(Form("hq_%.2i", i), i + 1, i + 1);
       if (pChannel == nullptr || h_q->Integral() < 1000) continue;
