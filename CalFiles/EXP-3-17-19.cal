@@ -1,0 +1,1009 @@
+
+FIG01BN00X	{
+Type:      TFipps
+Name:      FIG01BN00X
+Number:    1
+Address:   0x00000000
+Digitizer: V1725
+ENGCoeff:  0.155128	0.346043	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG01BN00X	{
+Type:      TFipps
+Name:      FIG01BN00X
+Number:    2
+Address:   0x00000001
+Digitizer: V1725
+ENGCoeff:  0.094313	0.345594	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG01WN00X	{
+Type:      TFipps
+Name:      FIG01WN00X
+Number:    3
+Address:   0x00000002
+Digitizer: V1725
+ENGCoeff:  0.049458	0.327261	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG01RN00X	{
+Type:      TFipps
+Name:      FIG01RN00X
+Number:    4
+Address:   0x00000003
+Digitizer: V1725
+ENGCoeff:  0.033639	0.348061	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG02GN00X	{
+Type:      TFipps
+Name:      FIG02GN00X
+Number:    5
+Address:   0x00000004
+Digitizer: V1725
+ENGCoeff:  0.052644	0.333059	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG02BN00X	{
+Type:      TFipps
+Name:      FIG02BN00X
+Number:    6
+Address:   0x00000005
+Digitizer: V1725
+ENGCoeff:  0.274044	0.336273	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG02WN00X	{
+Type:      TFipps
+Name:      FIG02WN00X
+Number:    7
+Address:   0x00000006
+Digitizer: V1725
+ENGCoeff:  0.296523	0.357488	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG02RN00X	{
+Type:      TFipps
+Name:      FIG02RN00X
+Number:    8
+Address:   0x00000007
+Digitizer: V1725
+ENGCoeff:  0.183620	0.330599	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG03GN00X	{
+Type:      TFipps
+Name:      FIG03GN00X
+Number:    9
+Address:   0x00000008
+Digitizer: V1725
+ENGCoeff:  0.085185	0.322961	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG03BN00X	{
+Type:      TFipps
+Name:      FIG03BN00X
+Number:    10
+Address:   0x00000009
+Digitizer: V1725
+ENGCoeff:  0.054931	0.335763	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG03WN00X	{
+Type:      TFipps
+Name:      FIG03WN00X
+Number:    11
+Address:   0x0000000a
+Digitizer: V1725
+ENGCoeff:  0.284325	0.321783	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG03RN00X	{
+Type:      TFipps
+Name:      FIG03RN00X
+Number:    12
+Address:   0x0000000b
+Digitizer: V1725
+ENGCoeff:  0.044861	0.337218	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG04GN00X	{
+Type:      TFipps
+Name:      FIG04GN00X
+Number:    13
+Address:   0x0000000c
+Digitizer: V1725
+ENGCoeff:  0.255023	0.320459	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG04BN00X	{
+Type:      TFipps
+Name:      FIG04BN00X
+Number:    14
+Address:   0x000000ca
+Digitizer: V1725
+ENGCoeff:  0.367680	0.314002	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG04WN00X	{
+Type:      TFipps
+Name:      FIG04WN00X
+Number:    15
+Address:   0x0000000e
+Digitizer: V1725
+ENGCoeff:  0.088717	0.316346	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG04RN00X	{
+Type:      TFipps
+Name:      FIG04RN00X
+Number:    16
+Address:   0x0000000f
+Digitizer: V1725
+ENGCoeff:  0.090887	0.314521	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG05GN00X	{
+Type:      TFipps
+Name:      FIG05GN00X
+Number:    17
+Address:   0x00000040
+Digitizer: V1725
+ENGCoeff:  0.353058	0.330291	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG05BN00X	{
+Type:      TFipps
+Name:      FIG05BN00X
+Number:    18
+Address:   0x00000041
+Digitizer: V1725
+ENGCoeff:  0.050390	0.335769	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG05WN00X	{
+Type:      TFipps
+Name:      FIG05WN00X
+Number:    19
+Address:   0x000000cb
+Digitizer: V1725
+ENGCoeff:  0.130879	0.324744	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG05WN00X	{
+Type:      TFipps
+Name:      FIG05WN00X
+Number:    20
+Address:   0x00000043
+Digitizer: V1725
+ENGCoeff:  -0.214234	0.336451	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG06GN00X	{
+Type:      TFipps
+Name:      FIG06GN00X
+Number:    21
+Address:   0x00000044
+Digitizer: V1725
+ENGCoeff:  -0.027329	0.343712	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG06BN00X	{
+Type:      TFipps
+Name:      FIG06BN00X
+Number:    22
+Address:   0x00000045
+Digitizer: V1725
+ENGCoeff:  0.197810	0.333406	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG06WN00X	{
+Type:      TFipps
+Name:      FIG06WN00X
+Number:    23
+Address:   0x00000046
+Digitizer: V1725
+ENGCoeff:  0.205372	0.338474	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG06RN00X	{
+Type:      TFipps
+Name:      FIG06RN00X
+Number:    24
+Address:   0x00000047
+Digitizer: V1725
+ENGCoeff:  0.155089	0.325297	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG07GN00X	{
+Type:      TFipps
+Name:      FIG07GN00X
+Number:    25
+Address:   0x00000048
+Digitizer: V1725
+ENGCoeff:  0.079688	0.339594	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG07BN00X	{
+Type:      TFipps
+Name:      FIG07BN00X
+Number:    26
+Address:   0x00000049
+Digitizer: V1725
+ENGCoeff:  0.076347	0.337669	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG07WN00X	{
+Type:      TFipps
+Name:      FIG07WN00X
+Number:    27
+Address:   0x000000cd
+Digitizer: V1725
+ENGCoeff:  0.072812	0.335205	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG07RN00X	{
+Type:      TFipps
+Name:      FIG07RN00X
+Number:    28
+Address:   0x0000004b
+Digitizer: V1725
+ENGCoeff:  0.210939	0.333999	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG08GN00X	{
+Type:      TFipps
+Name:      FIG08GN00X
+Number:    29
+Address:   0x0000004c
+Digitizer: V1725
+ENGCoeff:  0.274719	0.321652	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG08BN00X	{
+Type:      TFipps
+Name:      FIG08BN00X
+Number:    30
+Address:   0x0000004d
+Digitizer: V1725
+ENGCoeff:  0.092231	0.338072	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG08WN00X	{
+Type:      TFipps
+Name:      FIG08WN00X
+Number:    31
+Address:   0x0000004e
+Digitizer: V1725
+ENGCoeff:  0.168588	0.338443	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+FIG08RN00X	{
+Type:      TFipps
+Name:      FIG08RN00X
+Number:    32
+Address:   0x0000004f
+Digitizer: V1725
+ENGCoeff:  -0.036350	0.325646	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL01XN00X	{
+Type:      TFippsLaBr
+Name:      LBL01XN00X
+Number:    33
+Address:   0x00000080
+Digitizer: V1725
+ENGCoeff:  -0.720606	0.355467	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL02XN00X	{
+Type:      TFippsLaBr
+Name:      LBL02XN00X
+Number:    34
+Address:   0x00000081
+Digitizer: V1725
+ENGCoeff:  -0.569275	0.352969	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL03XN00X	{
+Type:      TFippsLaBr
+Name:      LBL03XN00X
+Number:    35
+Address:   0x00000082
+Digitizer: V1725
+ENGCoeff:  -0.865214	0.359297	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL04XN00X	{
+Type:      TFippsLaBr
+Name:      LBL04XN00X
+Number:    36
+Address:   0x00000083
+Digitizer: V1725
+ENGCoeff:  -0.603266	0.349477	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL05XN00X	{
+Type:      TFippsLaBr
+Name:      LBL05XN00X
+Number:    37
+Address:   0x00000084
+Digitizer: V1725
+ENGCoeff:  -0.806186	0.349496	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL06XN00X	{
+Type:      TFippsLaBr
+Name:      LBL06XN00X
+Number:    38
+Address:   0x00000085
+Digitizer: V1725
+ENGCoeff:  -0.765789	0.363693	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL07XN00X	{
+Type:      TFippsLaBr
+Name:      LBL07XN00X
+Number:    39
+Address:   0x00000086
+Digitizer: V1725
+ENGCoeff:  -0.804196	0.362521	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL08XN00X	{
+Type:      TFippsLaBr
+Name:      LBL08XN00X
+Number:    40
+Address:   0x00000087
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL09XN00X	{
+Type:      TFippsLaBr
+Name:      LBL09XN00X
+Number:    41
+Address:   0x00000088
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL10XN00X	{
+Type:      TFippsLaBr
+Name:      LBL10XN00X
+Number:    42
+Address:   0x00000089
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL11XN00X	{
+Type:      TFippsLaBr
+Name:      LBL11XN00X
+Number:    43
+Address:   0x0000008a
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL12XN00X	{
+Type:      TFippsLaBr
+Name:      LBL12XN00X
+Number:    44
+Address:   0x0000008b
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL13XN00X	{
+Type:      TFippsLaBr
+Name:      LBL13XN00X
+Number:    45
+Address:   0x0000008c
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL14XN00X	{
+Type:      TFippsLaBr
+Name:      LBL14XN00X
+Number:    46
+Address:   0x0000008d
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL15XN00X	{
+Type:      TFippsLaBr
+Name:      LBL15XN00X
+Number:    47
+Address:   0x0000008e
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBL16XN00X	{
+Type:      TFippsLaBr
+Name:      LBL16XN00X
+Number:    48
+Address:   0x0000008f
+Digitizer: V1725
+ENGCoeff:  -0.989589	0.356096	-0.000000e+00	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBT01XT00X	{
+Type:      TFippsTAC
+Name:      LBT01XT00X
+Number:    49
+Address:   0x000000c0
+Digitizer: V1725
+ENGCoeff:  0.000000e+00	1.000000	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBT02XT00X	{
+Type:      TFippsTAC
+Name:      LBT02XT00X
+Number:    50
+Address:   0x000000c1
+Digitizer: V1725
+ENGCoeff:  0.000000e+00	1.000000	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBT03XT00X	{
+Type:      TFippsTAC
+Name:      LBT03XT00X
+Number:    51
+Address:   0x000000c2
+Digitizer: V1725
+ENGCoeff:  0.000000e+00	1.000000	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBT04XT00X	{
+Type:      TFippsTAC
+Name:      LBT04XT00X
+Number:    51
+Address:   0x000000c3
+Digitizer: V1725
+ENGCoeff:  0.000000e+00	1.000000	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBT05XT00X	{
+Type:      TFippsTAC
+Name:      LBT05XT00X
+Number:    52
+Address:   0x000000c4
+Digitizer: V1725
+ENGCoeff:  0.000000e+00	1.000000	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBT06XT00X	{
+Type:      TFippsTAC
+Name:      LBT06XT00X
+Number:    53
+Address:   0x000000c5
+Digitizer: V1725
+ENGCoeff:  0.000000e+00	1.000000	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBT07XT00X	{
+Type:      TFippsTAC
+Name:      LBT07XT00X
+Number:    54
+Address:   0x000000c6
+Digitizer: V1725
+ENGCoeff:  0.000000e+00	1.000000	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
+LBT07XT00X	{
+Type:      TFippsTAC
+Name:      LBT07XT00X
+Number:    55
+Address:   0x000000c7
+Digitizer: V1725
+ENGCoeff:  0.000000e+00	1.000000	
+EnergyNonlinearity:  
+Integration: 0
+TimeOffset: 0
+ENGChi2:     0.000000
+EFFCoeff:  
+EFFChi2:   0.000000
+FileInt: 0
+}
+//====================================//
+
+
