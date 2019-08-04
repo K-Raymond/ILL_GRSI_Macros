@@ -68,12 +68,12 @@ public:
    Double_t fggPrompt         = 500.;                         // ns
    Double_t fggBackgroundLow  = 1000.;                        // ns
    Double_t fggBackgroundHigh = fggBackgroundLow + fggPrompt; // ns
-   Double_t fggEventMixed     = 2000.; // ns
+   Double_t fggEventMixed     = 2500.; // ns
 
    //*** HISTOGRAM PARAMTERS ***//
    Double_t fXMin             = 0.;
    Double_t fXMax             = 10000.;
-   int fEnergyBins            = 30000;
+   int fEnergyBins            = 20000;
    Int_t fggBins[3] = {fEnergyBins, fEnergyBins};
    Double_t fggXMin[3] = {fXMin, fXMin};
    Double_t fggXMax[3] = {fXMax, fXMax};

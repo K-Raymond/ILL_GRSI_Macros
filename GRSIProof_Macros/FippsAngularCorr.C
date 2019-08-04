@@ -4,6 +4,10 @@
 
 void FippsAngularCorr::CreateHistograms()
 {
+   fH1["gEM"] = new TH1D("gEM", "Event-Mixed", 360, 0, 180);
+   fH1["gEM_Index"] = new TH1D("gEM_Index", "Event-Mixed by Index", fAngCorrTrans.GetNumberOfUniqueAngles(),
+         0, (double_t) fAngCorrTrans.GetNumberOfUniqueAngles());
+
    // Make a prompt and event mixed gamma-gamma matrix for each unique angle
    for( size_t i = 0; i < fAngCorrTrans.GetNumberOfUniqueAngles(); i++ ) {
       double_t CurrentAngle = fAngCorrTrans.IndexToAngle(i);
@@ -27,7 +31,9 @@ void FippsAngularCorr::CreateHistograms()
 
 Double_t FippsAngularCorr::GetAngle(TDetectorHit* Hit1, TDetectorHit* Hit2)
 {
-   return TMath::RadToDeg()*(Hit1->GetPosition().Angle(Hit2->GetPosition()));
+   TVector3 Vec1 = TFipps::GetPosition(Hit1->GetDetector(), Hit1->GetCrystal(), 90);
+   TVector3 Vec2 = TFipps::GetPosition(Hit2->GetDetector(), Hit2->GetCrystal(), 90);
+   return TMath::RadToDeg()*(Vec1.Angle(Vec2));
 }
 
 // ** TIMING FUNCTIONS ** //
@@ -59,7 +65,10 @@ void FippsAngularCorr::FillHistograms()
       for(auto j = 0; j < fFipps->GetMultiplicity(); ++j) {
          if( i == j) continue;
          auto Fipps2 = fFipps->GetFippsHit(j);
-         int AngleIndex = fAngCorrTrans.AngleToIndex(GetAngle(Fipps1, Fipps2));
+         Double_t Angle = GetAngle(Fipps1, Fipps2);
+         fH1.at("gEM")->Fill(Angle);
+         int AngleIndex = fAngCorrTrans.AngleToIndex(Angle);
+         fH1.at("gEM_Index")->Fill(AngleIndex);
          Double_t SparseInput[2] = {Fipps1->GetEnergy(), Fipps2->GetEnergy()};
 
          // Fill the matrix which corrisponds to which angle
@@ -104,9 +113,9 @@ void TAngCorrIndexTranslator::MakeIndexToAngleMap()
             // Loop over clover 2
             for( size_t CrystalIndex2 = 0; CrystalIndex2 < 4; CrystalIndex2++ ) {
                isNewAngle = true; // assume angle combination is new
-               TVector3 Pos1 = fDetectorClass->GetPosition(DetectorIndex1, CrystalIndex1);
-               TVector3 Pos2 = fDetectorClass->GetPosition(DetectorIndex2, CrystalIndex2);
-               double_t RelAngle = RadToDegree( Pos1.Angle(Pos2) );
+               TVector3 Pos1 = TFipps::GetPosition(DetectorIndex1, CrystalIndex1, 90.0);
+               TVector3 Pos2 = TFipps::GetPosition(DetectorIndex2, CrystalIndex2, 90.0);
+               double_t RelAngle = TMath::RadToDeg()*Pos1.Angle(Pos2);
                for( size_t i = 0; i < fIndexToAngleMap.size(); i++) {
                   if( isNewAngle == false ) continue;
                   if( abs( RelAngle - fIndexToAngleMap[i] ) < 0.0001 )
@@ -132,11 +141,15 @@ void TAngCorrIndexTranslator::MakeCombinationMap()
          for( size_t CrystalIndex1 = 0; CrystalIndex1 < 4; CrystalIndex1++ )
             for( size_t CrystalIndex2 = 0; CrystalIndex2 < 4; CrystalIndex2++ ) {
                bool isNewAngle = true; // assume angle combination is new
-               TVector3 Pos1 = fDetectorClass->GetPosition(DetectorIndex1, CrystalIndex1, 90); // d to target 9cm
-               TVector3 Pos2 = fDetectorClass->GetPosition(DetectorIndex2, CrystalIndex2, 90);
+               TVector3 Pos1 = TFipps::GetPosition(DetectorIndex1, CrystalIndex1, 90); // d to target 9cm
+               TVector3 Pos2 = TFipps::GetPosition(DetectorIndex2, CrystalIndex2, 90);
                double_t RelAngle = TMath::RadToDeg()*Pos1.Angle(Pos2);
                fIndexToCombinationMap[AngleToIndex(RelAngle)] += 1; // incriment combination of angle
             }
+   for( size_t i = 0; i < fIndexToCombinationMap.size(); i++ ) {
+      std::cout << "Angle: " << fIndexToAngleMap[i] << ", ";
+      std::cout << "Counts: " << fIndexToCombinationMap[i] << std::endl;
+   }
 }
 
 int TAngCorrIndexTranslator::AngleToIndex(double_t angle)
