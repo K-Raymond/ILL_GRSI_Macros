@@ -10,6 +10,8 @@
 
 #include "TChain.h"
 #include "TFile.h"
+#include "TVector3.h"
+#include "TVector3.h"
 
 #include "TH1.h"
 #include "TH2.h"
@@ -20,9 +22,35 @@
 
 #include "TFipps.h"
 #include "TFippsBgo.h"
-#include "TFippsLaBr.h"
-#include "TFippsTAC.h"
 
+#include <algorithm>
+#include <vector>
+
+
+class TAngCorrIndexTranslator {
+   // Angles are stored in degrees sorted from least angle to highest angle (0.0 -> 180.0)
+   vector<double_t> fIndexToAngleMap;
+   // Stores the number of possible combinations with respect to index 
+   vector<int> fIndexToCombinationMap;
+   TFipps* fDetectorClass = new TFipps();
+
+   void MakeIndexToAngleMap();
+   void MakeCombinationMap();
+   double_t RadToDegree( double_t radAngle ) { return TMath::RadToDeg()*radAngle; }
+
+   public:
+   TAngCorrIndexTranslator();
+   ~TAngCorrIndexTranslator();
+
+   // Managing translations
+   int AngleToIndex(double_t angle);
+   double_t IndexToAngle( int i );
+   size_t GetNumberOfUniqueAngles() { return fIndexToAngleMap.size(); }
+
+   // Get Raw angle combinations
+   int GetCombinationOfIndex( int i );
+   int GetCombinationOfAngle( double_t angle);
+};
 // Fixed size dimensions of array or collections stored in the TTree if any.
 
 class FippsAngularCorr : public TGRSISelector { // Must be same name as .C and .h
@@ -30,13 +58,11 @@ class FippsAngularCorr : public TGRSISelector { // Must be same name as .C and .
 public:
    TFipps *    fFipps     = nullptr; // Pointers to spot that events will be
    TFippsBgo * fFippsBgo  = nullptr;
-   TFippsLaBr *fFippsLaBr = nullptr;
-   TFippsTAC * fFippsTAC  = nullptr;
+
+   TAngCorrIndexTranslator fAngCorrTrans;
 
    bool fhasFipps     = false;
    bool fhasFippsBgo  = false;
-   bool fhasFippsLaBr = false;
-   bool fhasFippsTAC  = false;
 
    //*** TIMING PARAMETERS ***//
    Double_t fggPrompt         = 500.;                         // ns
@@ -48,17 +74,13 @@ public:
    Double_t fXMin             = 0.;
    Double_t fXMax             = 10000.;
    int fEnergyBins            = 30000;
-   Double_t fAngleMin         = 0.0;
-   Double_t fAngleMax         = 180.0;
-   int fAngleBins             = 360;
-   Int_t ggaBins[3] = {fAngleBins, fEnergyBins, fEnergyBins};
-   Double_t ggaXMin[3] = {fAngleMin, fXMin, fXMin};
-   Double_t ggaXMax[3] = {fAngleMax, fXMax, fXMax};
+   Int_t fggBins[3] = {fEnergyBins, fEnergyBins};
+   Double_t fggXMin[3] = {fXMin, fXMin};
+   Double_t fggXMax[3] = {fXMax, fXMax};
 
    bool IsCoincidencePrompt(TDetectorHit *Hit1, TDetectorHit *Hit2);
    bool IsCoincidencePrompt(TDetectorHit *Hit1, TDetectorHit *Hit2, TDetectorHit *Hit3);
    bool IsCoincidenceBackground(TDetectorHit *Hit1, TDetectorHit *Hit2);
-   bool IsCoincidenceBackground(TDetectorHit *Hit1, TDetectorHit *Hit2, TDetectorHit *Hit3) { return false; };
    bool IsEventMixed(TDetectorHit* Hit1, TDetectorHit* Hit2);
 
    Double_t GetAngle(TDetectorHit* Hit1, TDetectorHit* Hit2);
@@ -83,7 +105,6 @@ public:
 
    ClassDef(FippsAngularCorr, 2); // Makes ROOT happier
 };
-
 #endif
 
 #ifdef FippsAngularCorr_cxx
@@ -97,18 +118,6 @@ void FippsAngularCorr::InitializeBranches(TTree *tree)
    }
    if (tree->SetBranchAddress("TFippsBgo", &fFippsBgo) == TTree::kMissingBranch) {
       fFippsBgo = new TFippsBgo;
-   } else {
-      fhasFippsBgo = true;
-   }
-   if (tree->SetBranchAddress("TFippsLaBr", &fFippsLaBr) == TTree::kMissingBranch) {
-      fFippsLaBr = new TFippsLaBr;
-   } else {
-      fhasFippsLaBr = true;
-   }
-   if (tree->SetBranchAddress("TFippsTAC", &fFippsLaBr) == TTree::kMissingBranch) {
-      fFippsTAC = new TFippsTAC;
-   } else {
-      fhasFippsTAC = true;
    }
 }
 
