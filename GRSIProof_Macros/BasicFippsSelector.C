@@ -10,6 +10,8 @@ void BasicFippsSelector::CreateHistograms()
    fH1["gsE"] = new TH1D("gsE", "suppressed #gamma Singles", (Int_t)4 * fXMax, 0, fXMax);
    fH1["asE"] = new TH1D("asE", "suppressed Addback Singles", (Int_t)4 * fXMax, 0, fXMax);
 
+   fH1["gt"] = new TH1D("gt", "HPGe Timing", 10000, 0, 10000);
+
    fH2["gEMat"] = new TH2D("gEMat", "#gamma Energy Matrix", 98, 0, 98, 10000, 0, 10000);
 
    Int_t    ggBins[2] = {10000, 10000};
@@ -74,6 +76,7 @@ void BasicFippsSelector::FillGammaHistograms()
       for (auto j = 0; j < fFipps->GetMultiplicity(); ++j) {
          if (i == j) continue;
          auto Fipps2 = fFipps->GetFippsHit(j);
+         fH1.at("gt")->Fill(abs(Fipps1->GetTime() - Fipps2->GetTime()));
          if (IsCoincidencePrompt(Fipps1, Fipps2)) {
             Double_t ggEnergy[2] = {Fipps1->GetEnergy(), Fipps2->GetEnergy()};
             fHSparse.at("ggE")->Fill(ggEnergy);

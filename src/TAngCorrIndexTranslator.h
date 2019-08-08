@@ -11,6 +11,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <string>
 
 #include "TFipps.h"
 
@@ -20,6 +21,9 @@ class TAngCorrIndexTranslator {
    vector<double_t> fIndexToAngleMap;
    // Stores the number of possible combinations with respect to index 
    vector<int> fIndexToCombinationMap;
+   // Stores whether the detector exists in a particular experiment
+   // Mapped by DetectorIndex*4+CrystalIndex
+   vector<bool> fHasDetectorVec;
    TFipps* fDetectorClass = new TFipps();
 
    void MakeIndexToAngleMap();
@@ -28,6 +32,7 @@ class TAngCorrIndexTranslator {
 
    public:
    TAngCorrIndexTranslator();
+   TAngCorrIndexTranslator(std::string InCalFile);
    ~TAngCorrIndexTranslator();
 
    // Managing translations

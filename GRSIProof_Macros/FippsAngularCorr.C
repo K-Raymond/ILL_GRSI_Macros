@@ -4,7 +4,7 @@
 
 void FippsAngularCorr::CreateHistograms()
 {
-   fH1["gEM"] = new TH1D("gEM", "Event-Mixed", 360, 0, 180);
+   fH1["gEM"] = new TH1D("gEM", "Event-Mixed", 10000, 0, 180);
    fH1["gEM_Index"] = new TH1D("gEM_Index", "Event-Mixed by Index", fAngCorrTrans.GetNumberOfUniqueAngles(),
          0, (double_t) fAngCorrTrans.GetNumberOfUniqueAngles());
 
@@ -14,7 +14,7 @@ void FippsAngularCorr::CreateHistograms()
       fHSparse[Form("ggP_%zu", i)] = new THnSparseF(Form("ggP_%zu", i),
             Form("Prompt #gamma-#gamma for angle %0.1f\370", CurrentAngle), 2, fggBins, fggXMin, fggXMax);
       fHSparse[Form("ggEM_%zu", i)] = new THnSparseF(Form("ggEM_%zu", i),
-            Form("Prompt #gamma-#gamma for angle %0.1f\370", CurrentAngle), 2, fggBins, fggXMin, fggXMax);
+            Form("Event-Mixed #gamma-#gamma for angle %0.1f\370", CurrentAngle), 2, fggBins, fggXMin, fggXMax);
    }
 
    // Send histograms to Output list to be added and written.

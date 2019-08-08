@@ -4,9 +4,30 @@
 
 TAngCorrIndexTranslator::TAngCorrIndexTranslator()
 {
+   fHasDetectorVec.resize(4*16,true); // assume all detectors
    MakeIndexToAngleMap();
    MakeCombinationMap();
 }
+
+TAngCorrIndexTranslator::TAngCorrIndexTranslator(std::string InCalFile)
+{
+   TChannel::ReadCalFile(InCalFile.c_str());
+   fHasDetectorVec.resize(4*16, false); // Assume we dont have any detectors
+   // Loop over all TChannels and check to see if the detector exists
+   for( int i = 0; i < TChannel::GetNumberOfChannels(); i++ ) {
+      TChannel* pChannel = TChannel::GetChannelByNumber(i);
+      if( pChannel == nullptr )
+         continue;
+
+      // Check if detector is TFipps
+      if( pChannel->GetClassType() == TFipps::Class() ){
+         fHasDetectorVec[pChannel->GetDetectorNumber()*4 + pChannel->GetCrystalNumber()] = true;
+      }
+   }
+   MakeIndexToAngleMap();
+   MakeCombinationMap();
+}
+
 
 TAngCorrIndexTranslator::~TAngCorrIndexTranslator()
 {
@@ -45,20 +66,33 @@ void TAngCorrIndexTranslator::MakeIndexToAngleMap()
 void TAngCorrIndexTranslator::MakeCombinationMap()
 {
    // Make the combination and angle maps the same size
+   bool isDetPair = true; // Does detector pair exist?
    fIndexToCombinationMap.resize(fIndexToAngleMap.size());
    for( size_t DetectorIndex1 = 1 ; DetectorIndex1 <= 16; DetectorIndex1++ )
       for( size_t DetectorIndex2 = 1 ; DetectorIndex2 <= 16; DetectorIndex2++ )
          for( size_t CrystalIndex1 = 0; CrystalIndex1 < 4; CrystalIndex1++ )
             for( size_t CrystalIndex2 = 0; CrystalIndex2 < 4; CrystalIndex2++ ) {
-               bool isNewAngle = true; // assume angle combination is new
+               isDetPair = true;
+               if( !fHasDetectorVec[ DetectorIndex2*4 + CrystalIndex2 ] )
+                  isDetPair = false;
+               if( !fHasDetectorVec[ DetectorIndex1*4 + CrystalIndex1 ] )
+                  isDetPair = false;
                TVector3 Pos1 = TFipps::GetPosition(DetectorIndex1, CrystalIndex1, 90); // d to target 9cm
                TVector3 Pos2 = TFipps::GetPosition(DetectorIndex2, CrystalIndex2, 90);
                double_t RelAngle = TMath::RadToDeg()*Pos1.Angle(Pos2);
-               fIndexToCombinationMap[AngleToIndex(RelAngle)] += 1; // incriment combination of angle
+               if( isDetPair ) 
+                  fIndexToCombinationMap[AngleToIndex(RelAngle)] += 1; // incriment combination of angle
             }
    for( size_t i = 0; i < fIndexToCombinationMap.size(); i++ ) {
       std::cout << "Angle: " << fIndexToAngleMap[i] << ", ";
       std::cout << "Counts: " << fIndexToCombinationMap[i] << std::endl;
+   }
+
+   // Since the numbers in this matrix will be used for division, pairs that don't exist
+   // need to be set to one to avoid division by zero
+   for( size_t i = 0; i < fIndexToCombinationMap.size(); i++ ) {
+      if( fIndexToCombinationMap[i] == 0 )
+         fIndexToCombinationMap[i] = 1;
    }
 }
 

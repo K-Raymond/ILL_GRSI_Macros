@@ -1,7 +1,7 @@
 
-FIG01BN00X	{
+FIG01GN00X	{
 Type:      TFipps
-Name:      FIG01BN00X
+Name:      FIG01GN00X
 Number:    1
 Address:   0x00000000
 Digitizer: V1725
@@ -341,9 +341,9 @@ FileInt: 0
 //====================================//
 
 
-FIG05WN00X	{
+FIG05RN00X	{
 Type:      TFipps
-Name:      FIG05WN00X
+Name:      FIG05RN00X
 Number:    20
 Address:   0x00000043
 Digitizer: V1725
