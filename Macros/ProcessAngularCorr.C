@@ -26,19 +26,19 @@ std::tuple<TGraphErrors*, TCanvas*> MakeGraph(TFile* inFile, Double_t Gamma1, Do
    TGraphErrors* CountsVsAngle = new TGraphErrors();
    CountsVsAngle->SetTitle(Form("Counts vs Angle for E1 = %0.2f keV and E2 = %0.2f keV", Gamma1, Gamma2));
    CountsVsAngle->SetName(Form("gg_%0.0f_%0.0f", Gamma1, Gamma2));
-   CountsVsAngle->GetXaxis()->SetTitle("Cos(Theta)");
+   CountsVsAngle->GetXaxis()->SetTitle("Cos(#theta)");
    CountsVsAngle->GetYaxis()->SetTitle("Normalized Counts");
 
    TGraphErrors* PromptVsAngle = new TGraphErrors();
    PromptVsAngle->SetTitle(Form("Prompt vs Angle for E1 = %0.2f keV and E2 = %0.2f keV", Gamma1, Gamma2));
    PromptVsAngle->SetName(Form("gg_%0.0f_%0.0f_Prompt", Gamma1, Gamma2));
-   PromptVsAngle->GetXaxis()->SetTitle("Cos(Theta)");
+   PromptVsAngle->GetXaxis()->SetTitle("Cos(#theta)");
    PromptVsAngle->GetYaxis()->SetTitle("Normalized Counts");
 
    TGraphErrors* EMVsAngle = new TGraphErrors();
    EMVsAngle->SetTitle(Form("Event-Mixed vs Angle for E1 = %0.2f keV and E2 = %0.2f keV", Gamma1, Gamma2));
    EMVsAngle->SetName(Form("gg_%0.0f_%0.0f_EM", Gamma1, Gamma2));
-   EMVsAngle->GetXaxis()->SetTitle("Cos(Theta)");
+   EMVsAngle->GetXaxis()->SetTitle("Cos(#theta)");
    EMVsAngle->GetYaxis()->SetTitle("Normalized Counts");
    Int_t NPoints = 0;
 
@@ -110,6 +110,11 @@ std::tuple<TGraphErrors*, TCanvas*> MakeGraph(TFile* inFile, Double_t Gamma1, Do
       RawPromptPeak->SetLogLikelihoodFlag(false);
       RawPromptPeak->Fit(Prompt_Gate, "MEQ");
 
+      CFits->cd(i);
+      Prompt_Gate->DrawCopy();
+      CFits->Update();
+      CFits->Draw();
+
       EM_Gate->Sumw2();
       EM_Gate->Add(EM_Gate_BG, -1);
 
@@ -119,10 +124,12 @@ std::tuple<TGraphErrors*, TCanvas*> MakeGraph(TFile* inFile, Double_t Gamma1, Do
       RawEMPeak->Fit(EM_Gate, "MEQ");
 
       // Extract Measurables
-      double_t PromptArea = RawPromptPeak->GetArea()/gAngCorr.GetCombinationOfAngle(i);
-      double_t PromptAreaErr = RawPromptPeak->GetAreaErr()/gAngCorr.GetCombinationOfAngle(i);
-      double_t EMArea = RawEMPeak->GetArea()/gAngCorr.GetCombinationOfAngle(i);
-      double_t EMAreaErr = RawEMPeak->GetAreaErr()/gAngCorr.GetCombinationOfAngle(i);
+      double_t ScalingFactor = (double_t)gAngCorr.GetCombinationOfIndex((int)i);
+      std::cout << "Scaling Factor is: " << ScalingFactor << std::endl;
+      double_t PromptArea = RawPromptPeak->GetArea()/ScalingFactor;
+      double_t PromptAreaErr = RawPromptPeak->GetAreaErr()/ScalingFactor;
+      double_t EMArea = RawEMPeak->GetArea()/ScalingFactor;
+      double_t EMAreaErr = RawEMPeak->GetAreaErr()/ScalingFactor;
 
       double_t FinalArea = PromptArea/EMArea;
       double_t FinalAreaErr = FinalArea * TMath::Sqrt( TMath::Power( PromptAreaErr/PromptArea , 2)
@@ -186,14 +193,14 @@ void ProcessAngularCorr(TFile* InFile)
 
    // Export the lists
    TFile* outFile = new TFile("AngCorrGraphs.root", "RECREATE");
-   PhotoPeakList->Write();
+//   PhotoPeakList->Write();
    EMList->Write();
-//   CList->Write();
+   CList->Write();
    GraphList->Write();
 
    // Garbage Collection
    outFile->Close();
-   delete PhotoPeakList; delete EMList;
+   delete PhotoPeakList; delete EMList; delete GraphList;
 }
 
 void ProcessAngularCorr( std::string Filename ) 
