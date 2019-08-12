@@ -66,8 +66,8 @@ public:
 
    //*** TIMING PARAMETERS ***//
    Double_t fggPrompt         = 280.;                         // ns
-   Double_t fggBackgroundLow  = 1000.;                        // ns
-   Double_t fggBackgroundHigh = fggBackgroundLow + fggPrompt; // ns
+   Double_t fggBackgroundLow  = 500.;                        // ns
+   Double_t fggBackgroundHigh = 1500.; // ns
    Double_t fggEventMixed     = 2000.; // ns
 
    //*** HISTOGRAM PARAMTERS ***//

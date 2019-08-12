@@ -8,6 +8,14 @@ void FippsAngularCorr::CreateHistograms()
    fH1["gEM_Index"] = new TH1D("gEM_Index", "Event-Mixed by Index", fAngCorrTrans.GetNumberOfUniqueAngles(),
          0, (double_t) fAngCorrTrans.GetNumberOfUniqueAngles());
 
+   fH1["gPrompt"] = new TH1D("gPrompt", "Prompt", 10000, 0, 180);
+   fH1["gPrompt_Index"] = new TH1D("gPrompt_Index", "Event-Mixed by Index", fAngCorrTrans.GetNumberOfUniqueAngles(),
+         0, (double_t) fAngCorrTrans.GetNumberOfUniqueAngles());
+
+   fH1["gT"] = new TH1D("gT", "#gamma-#gamma timing", 10000, 0, 10000);
+   fH1["gTPrompt"] = new TH1D("gTPrompt", "#gamma-#gamma prompt timing", 10000, 0, 10000);
+   fH1["gTEM"] = new TH1D("gTEM", "#gamma-#gamma event-mixing timing", 10000, 0, 10000);
+
    // Make a prompt and event mixed gamma-gamma matrix for each unique angle
    for( size_t i = 0; i < fAngCorrTrans.GetNumberOfUniqueAngles(); i++ ) {
       double_t CurrentAngle = fAngCorrTrans.IndexToAngle(i);
@@ -15,6 +23,8 @@ void FippsAngularCorr::CreateHistograms()
             Form("Prompt #gamma-#gamma for angle %0.1f\370", CurrentAngle), 2, fggBins, fggXMin, fggXMax);
       fHSparse[Form("ggEM_%zu", i)] = new THnSparseF(Form("ggEM_%zu", i),
             Form("Event-Mixed #gamma-#gamma for angle %0.1f\370", CurrentAngle), 2, fggBins, fggXMin, fggXMax);
+      fHSparse[Form("ggbg_%zu", i)] = new THnSparseF(Form("ggbg_%zu", i),
+         Form("Time Random Background #gamma-#gamma for angle %0.1f\370", CurrentAngle), 2, fggBins, fggXMin, fggXMax);
    }
 
    // Send histograms to Output list to be added and written.
@@ -63,21 +73,29 @@ void FippsAngularCorr::FillHistograms()
    for(auto i = 0; i < fFipps->GetMultiplicity(); ++i) {
       auto Fipps1 = fFipps->GetFippsHit(i);
       for(auto j = 0; j < fFipps->GetMultiplicity(); ++j) {
-         if( i == j) continue;
+         if( i == j ) continue;
          auto Fipps2 = fFipps->GetFippsHit(j);
          Double_t Angle = GetAngle(Fipps1, Fipps2);
-         fH1.at("gEM")->Fill(Angle);
          int AngleIndex = fAngCorrTrans.AngleToIndex(Angle);
-         fH1.at("gEM_Index")->Fill(AngleIndex);
+         double_t TimeDiff = std::fabs( Fipps1->GetTime() - Fipps2->GetTime() );
          Double_t SparseInput[2] = {Fipps1->GetEnergy(), Fipps2->GetEnergy()};
+         fH1.at("gT")->Fill( TimeDiff );
 
          // Fill the matrix which corrisponds to which angle
          if(IsCoincidencePrompt(Fipps1, Fipps2)) {
             fHSparse.at(Form("ggP_%i", AngleIndex))->Fill(SparseInput);
+            fH1.at("gPrompt")->Fill(Angle);
+            fH1.at("gPrompt_Index")->Fill(AngleIndex);
+            fH1.at("gTPrompt")->Fill( TimeDiff );
          }
          if( IsEventMixed(Fipps1, Fipps2) ) {
             fHSparse.at(Form("ggEM_%i", AngleIndex))->Fill(SparseInput);
+            fH1.at("gEM")->Fill(Angle);
+            fH1.at("gEM_Index")->Fill(AngleIndex);
+            fH1.at("gTEM")->Fill( TimeDiff );
          }
+         if(IsCoincidenceBackground(Fipps1, Fipps2) )
+           fHSparse.at(Form("ggbg_%i", AngleIndex))->Fill(SparseInput); 
       }
    }
 
@@ -86,6 +104,10 @@ void FippsAngularCorr::FillHistograms()
 
 void FippsAngularCorr::EndOfSort()
 {
+   for( size_t i = 0; i < fAngCorrTrans.GetNumberOfUniqueAngles(); i++ ) {
+      fHSparse.at(Form("ggP_%zu", i))->Sumw2();
+      fHSparse.at(Form("ggP_%zu", i))->Add(fHSparse.at(Form("ggbg_%zu", i)), -fggPrompt/(fggBackgroundHigh - fggBackgroundLow));
+   }
    return;
 }
 

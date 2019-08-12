@@ -45,7 +45,7 @@ std::tuple<TGraphErrors*, TCanvas*> MakeGraph(TFile* inFile, Double_t Gamma1, Do
    // Make a canvas to show fit plots
    TCanvas* CFits = new TCanvas();
    CFits->SetName(Form("Cgg_%0.0f_%0.0f", Gamma1, Gamma2));
-   CFits->Divide(4,13);
+   CFits->Divide(4,13, 0, 0);
    
    // Loop over all crystals, skipping the lowest angle 0.0
    for( size_t i = 1; i < gAngCorr.GetNumberOfUniqueAngles(); i++ )
@@ -77,8 +77,8 @@ std::tuple<TGraphErrors*, TCanvas*> MakeGraph(TFile* inFile, Double_t Gamma1, Do
       
       TH1* Prompt_Spectra = Prompt_Sparse->Projection(1);
       TPeak* PromptPeak = new TPeak(Gamma2, Gamma2 - 5, Gamma2 + 5);
-      PromptPeak->Fit(Prompt_Spectra, "MEQ");
-      double_t PromptGateWidth = PromptPeak->GetFWHM();
+      PromptPeak->Fit(Prompt_Spectra, "MEQI");
+      double_t PromptGateWidth =  PromptPeak->GetFWHM();
       double_t PromptGateCenter = PromptPeak->GetCentroid();
       delete PromptPeak;
 
@@ -104,24 +104,23 @@ std::tuple<TGraphErrors*, TCanvas*> MakeGraph(TFile* inFile, Double_t Gamma1, Do
       // Background Subtract
       Prompt_Gate->Sumw2();
       Prompt_Gate->Add(Prompt_Gate_BG, -1);
-
-      Prompt_Gate->GetXaxis()->SetRangeUser( Gamma1 - 10, Gamma1 + 10 );
-      TPeak* RawPromptPeak = new TPeak(Gamma1, Gamma1 - 7, Gamma1 + 7);
-      RawPromptPeak->SetLogLikelihoodFlag(false);
-      RawPromptPeak->Fit(Prompt_Gate, "MEQ");
-
-      CFits->cd(i);
-      Prompt_Gate->DrawCopy();
-      CFits->Update();
-      CFits->Draw();
-
       EM_Gate->Sumw2();
       EM_Gate->Add(EM_Gate_BG, -1);
 
-      EM_Gate->GetXaxis()->SetRangeUser( Gamma1 - 10, Gamma1 + 10 );
+      Prompt_Gate->GetXaxis()->SetRangeUser( Gamma1 - 20, Gamma1 + 20 );
+      TPeak* RawPromptPeak = new TPeak(Gamma1, Gamma1 - 7, Gamma1 + 7);
+      RawPromptPeak->SetLogLikelihoodFlag(false);
+      RawPromptPeak->Fit(Prompt_Gate, "MEQI");
+
+      CFits->cd(i);
+      Prompt_Gate->DrawCopy();
+      CFits->Modified();
+      CFits->Update();
+
+      EM_Gate->GetXaxis()->SetRangeUser( Gamma1 - 20, Gamma1 + 20 );
       TPeak* RawEMPeak = new TPeak(Gamma1, Gamma1 - 7, Gamma1 + 7);
       RawEMPeak->SetLogLikelihoodFlag(false);
-      RawEMPeak->Fit(EM_Gate, "MEQ");
+      RawEMPeak->Fit(EM_Gate, "MEQI");
 
       // Extract Measurables
       double_t ScalingFactor = (double_t)gAngCorr.GetCombinationOfIndex((int)i);
@@ -166,6 +165,8 @@ std::tuple<TGraphErrors*, TCanvas*> MakeGraph(TFile* inFile, Double_t Gamma1, Do
    GraphList->Add(PromptVsAngle);
    GraphList->Add(EMVsAngle);
 
+   CFits->Update();
+   CFits->Draw();
    return std::make_tuple(CountsVsAngle, CFits);
 }  
 
