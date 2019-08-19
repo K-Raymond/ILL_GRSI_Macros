@@ -130,6 +130,9 @@ std::tuple<TGraphErrors*, TCanvas*> MakeGraph(TFile* inFile, Double_t Gamma1, Do
       double_t EMArea = RawEMPeak->GetArea()/ScalingFactor;
       double_t EMAreaErr = RawEMPeak->GetAreaErr()/ScalingFactor;
 
+      if( PromptArea < 1 || EMArea < 1 )
+         continue; // Hack to remove points which are zero
+
       double_t FinalArea = PromptArea/EMArea;
       double_t FinalAreaErr = FinalArea * TMath::Sqrt( TMath::Power( PromptAreaErr/PromptArea , 2)
             + TMath::Power( EMAreaErr / EMArea , 2) );
